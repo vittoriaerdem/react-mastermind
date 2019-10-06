@@ -12,8 +12,18 @@ class App extends Component {
     super();
     this.state = {
       selColorIdx: 0,
-      guesses: [],
+      guesses: [this.getNewGuess()],
       code: this.genCode(),
+    };
+  }
+
+  getNewGuess() {
+    return {
+      code: [null, null, null, null],
+      score: {
+        perfect: 0,
+        almost: 0
+      }
     };
   }
 
