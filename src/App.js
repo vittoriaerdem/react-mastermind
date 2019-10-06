@@ -12,30 +12,40 @@ class App extends Component {
     super();
     this.state = {
       selColorIdx: 0,
-      guesses: [this.getNewGuess()],
-      code: this.genCode(),
+      guesses: [this.getNewGuess(), this.getNewGuess()],
+      code: this.genCode()
     };
   }
 
   getNewGuess() {
     return {
-      code: [null, null, null, null],
-      score: {
-        perfect: 0,
-        almost: 0
-      }
-    };
-  }
+        code: [3, 2, 1, 0], // for testing purposes
+        score: {
+          perfect: 0,
+          almost: 0
+        }
+      };
+    }
 
   genCode () {
-    return new Array(4).fill().map(() => Math.floor(Math.random() * colors.length));
+    return new Array(4).fill().map(dummy => Math.floor(Math.random() * 4));
+  }
+
+  getWinTries() {
+    // if winner, return num guesses, otherwise 0 (no winner)
+    let lastGuess = this.state.guesses.length - 1;
+    return this.state.guesses[lastGuess].score.perfect === 4 ? lastGuess + 1 : 0;
   }
 
   render() {
+    let winTries = this.getWinTries();
     return (
       <div className="App">
-        <button onClick={() => 
-          this.setState({selColorIdx: ++this.state.selColorIdx % 4})}>
+        <button onClick={() => this.setState((state) => {
+          return {
+            selColorIdx: ++state.selColorIdx % 4
+          };
+        })}>
           Next Color
         </button>
         Selected color: {colors[this.state.selColorIdx]}
@@ -54,7 +64,7 @@ class App extends Component {
             <NewGameButton />
           </div>
         </div>
-        <footer>footer</footer>
+        <footer>{(winTries ? `You Won in ${winTries} Guesses!` : 'Good Luck!')}</footer>
       </div>
     );
   }
