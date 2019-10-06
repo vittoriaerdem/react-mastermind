@@ -41,8 +41,8 @@ class App extends Component {
     return this.state.guesses[lastGuess].score.perfect === 4 ? lastGuess + 1 : 0;
   }
 
-  handleColorSelection(colorIdx) {
-    alert(`color index ${colorIdx} selected!`);
+  handleColorSelection = (colorIdx) => {
+    this.setState({selColorIdx: colorIdx});
   }
 
   handleNewGameClick = () => {
@@ -141,6 +141,8 @@ class App extends Component {
           <GameBoard
             colors={colors}
             guesses={this.state.guesses}
+            handlePegClick={this.handlePegClick}
+            handleScoreClick={this.handleScoreClick}
           />
           <div className='App-controls'>
             <ColorPicker
@@ -149,7 +151,7 @@ class App extends Component {
               handleColorSelection={this.handleColorSelection}
             />
             <GameTimer />
-            <NewGameButton />
+            <NewGameButton handleNewGameClick={this.handleNewGameClick}/>
           </div>
         </div>
         <footer className='App-header-footer'>

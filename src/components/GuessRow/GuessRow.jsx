@@ -15,10 +15,15 @@ const GuessRow = (props) => (
     <GuessPegs
       colors={props.colors}
       code={props.guess.code}
+      currentGuess={props.currentGuess}
+      handlePegClick={props.handlePegClick}
     />
     {
-      props.currentGuess ?
-        <ScoreButton /> :
+      props.currentGuess && props.guess.score.perfect !== 4 ?
+        <ScoreButton
+          disabled={props.guess.code.includes(null)}
+          handleScoreClick={props.handleScoreClick}
+        /> :
         <GuessScore score={props.guess.score} />
     }
   </div>
