@@ -9,16 +9,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <header className="App-header">React Mastermind</header>
-      <div className="flex-h">
-        <GameBoard />
+        <header className="App-header">React Mastermind</header>
+        <div className="flex-h">
+          <GameBoard />
           <div>
             <ColorPicker />
             <GameTimer />
             <NewGameButton />
           </div>
         </div>
-      <footer className="component">footer</footer>
+        <footer>footer</footer>
       </div>
     );
   }
