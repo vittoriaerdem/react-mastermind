@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {
@@ -10,3 +11,5 @@
   font-size: 40px;
   text-align: center;
 }
+
+
