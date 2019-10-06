@@ -7,6 +7,8 @@ const GameBoard = (props) => (
       <GuessRow
         guess={guess}
         colors={props.colors}
+        rowIdx={idx}
+        currentGuess={idx === (props.guesses.length - 1)}
         key={idx}
       />
     )}
