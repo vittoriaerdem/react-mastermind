@@ -16,3 +16,7 @@ code {
   display: flex;
   justify-content: center;
 }
+
+button:focus, .btn:focus {
+  outline: none;
+}
